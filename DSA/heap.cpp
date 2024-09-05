@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 class heap{
 public:
@@ -115,6 +116,39 @@ int main(){
     for(int i=1;i<=n;i++){
         cout<<arr[i]<<" ";
     }
+    cout<<endl;
+    cout<<endl;
+    cout<<"USING PRIORITY QUEUE:"<<endl;
+    
+    priority_queue<int> pq;  //max heap
+    
+    pq.push(30);
+    pq.push(29);
+    pq.push(55);
+    pq.push(58);
+
+    cout<<"element at top: "<<pq.top()<<endl;
+
+    pq.pop();
+    cout<<"element at top: "<<pq.top()<<endl;
+
+    if(pq.empty()){
+        cout<<"pq is empty.."<<endl;
+    }
+    else{
+        cout<<"pq is not empty.."<<endl;
+    }
+
+    //min heap
+    cout<<endl;
+    cout<<"PRIORITY QUEUE FOR MIN HEAP"<<endl;
+    priority_queue<int,vector<int>,greater<int>> minHeap;
+    minHeap.push(30);
+    minHeap.push(29);
+    minHeap.push(55);
+    minHeap.push(58);
+
+    cout<<"element at top: "<<minHeap.top()<<endl;
 
     return 0;
 }
