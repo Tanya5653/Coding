@@ -1,6 +1,5 @@
-/*
-1
-2 3
-3 4 5
-4 5 6 7
-*/
+h.insert(55);
+    h.insert(53);
+    h.insert(52);
+    h.insert(54);
+    h.print();

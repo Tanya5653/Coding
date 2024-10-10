@@ -4,7 +4,7 @@ using namespace std;
 class heap{
 public:
     int arr[100];
-    int size;
+    int size=0;
 
     heap(){
         arr[0] = -1;
@@ -24,26 +24,24 @@ public:
             }
             else{
                 return;
-            }   
+            }
         }
     }
+
     void print(){
-        for(int i=1;i<=size;i++){
+        for(int i=0;i<=size;i++){
             cout<<arr[i]<<" ";
         }
         cout<<endl;
     }
+
     void deleteFromHeap(){
         if(size==0){
-            cout<<"nothing to delete"<<endl;
-            return;
+            cout<<"heap is empty so nothing to delete.."<<endl;
         }
-        //swapping 1st and last element
         arr[1]=arr[size];
-        //removing deleting last element
         size--;
 
-        //take root to correct pos
         int i=1;
         while(i<size){
             int leftIndex = 2*i;
@@ -64,14 +62,13 @@ public:
 };
 void heapify(int arr[],int n,int i){
     int largest = i;
-    int left = 2*i;
-    int right = 2*i+1;
-
-    if(left <= n && arr[largest]<arr[left]){
-        largest = left;
+    int leftIndex = 2*i;
+    int rightIndex = 2*i + 1;
+    if(leftIndex <= n && arr[largest] < arr[leftIndex] ){
+        largest = leftIndex;
     }
-    if(right <= n && arr[largest] < arr[right]){
-        largest= right;
+    if(rightIndex <= n && arr[largest] < arr[rightIndex]){
+        largest = rightIndex;
     }
     if(largest!=i){
         swap(arr[largest],arr[i]);
@@ -83,7 +80,7 @@ void heapSort(int arr[],int n){
     while(size>1){
         swap(arr[size],arr[1]);
         size--;
-    heapify(arr,size,1);
+        heapify(arr,size,1);
     }
 }
 int main(){
@@ -96,59 +93,28 @@ int main(){
     h.print();
 
     h.deleteFromHeap();
+    cout<<"After deletion from heap: "<<endl;
     h.print();
-
+    
     int arr[6] = {-1,54,53,55,52,50};
-    int n =5;
+    int n=5;
 
-    for(int i=n/2;i>0;i--){
+    for(int i= n/2;i>0;i--){
         heapify(arr,n,i);
     }
-    cout<<"printing array:"<<endl;
+    cout<<"Printing array:"<<endl;
     for(int i=1;i<=n;i++){
         cout<<arr[i]<<" ";
     }
     cout<<endl;
 
     heapSort(arr,n);
-    
+
     cout<<"printing sorted array:"<<endl;
     for(int i=1;i<=n;i++){
         cout<<arr[i]<<" ";
     }
     cout<<endl;
-    cout<<endl;
-    cout<<"USING PRIORITY QUEUE:"<<endl;
     
-    priority_queue<int> pq;  //max heap
-    
-    pq.push(30);
-    pq.push(29);
-    pq.push(55);
-    pq.push(58);
-
-    cout<<"element at top: "<<pq.top()<<endl;
-
-    pq.pop();
-    cout<<"element at top: "<<pq.top()<<endl;
-
-    if(pq.empty()){
-        cout<<"pq is empty.."<<endl;
-    }
-    else{
-        cout<<"pq is not empty.."<<endl;
-    }
-
-    //min heap
-    cout<<endl;
-    cout<<"PRIORITY QUEUE FOR MIN HEAP"<<endl;
-    priority_queue<int,vector<int>,greater<int>> minHeap;
-    minHeap.push(30);
-    minHeap.push(29);
-    minHeap.push(55);
-    minHeap.push(58);
-
-    cout<<"element at top: "<<minHeap.top()<<endl;
-
     return 0;
 }
