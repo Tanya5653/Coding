@@ -16,8 +16,8 @@ class TrieNode{
     }
 };
 class Trie{
-    public:
     TrieNode* root;
+    public:
     Trie(){
         root = new TrieNode('\0');
     }
@@ -42,7 +42,7 @@ class Trie{
         insertUtil(child,word.substr(1));
     }
     void insertWord(string word){
-        return insertUtil(root,word);
+        insertUtil(root,word);
     }
     bool searchUtil(TrieNode* root,string word){
         //base case
